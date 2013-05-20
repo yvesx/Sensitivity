@@ -35,10 +35,10 @@ randn('state',2009);
 rand('state',2009);
 
 %% n1 = 150; n2 = 300; r = 10;
-[n1,n2] = size(sensitivityRecSyS);
-r = rank(sensitivityRecSyS)+2;
+[n1,n2] = size(small);
+r = rank(small);
 %%M = randn(n1,r)*randn(r,n2);
-M = sensitivityRecSyS;
+M = small;
 df = r*(n1+n2-r);
 oversampling = 5; 
 m = min(5*df,round(.99*n1*n2) ); 
@@ -58,11 +58,11 @@ fprintf('Matrix completion: %d x %d matrix, rank %d, %.1f%% observations\n',...
     n1,n2,r,100*p);
 fprintf('\toversampling degrees of freedom by %.1f; noise std is %.1e\n',...
     m/df, sigma );
-if ~isreal(M), disp('Matrix is complex'); end
 %% Set parameters and solve
 
-tau = 5*sqrt(n1*n2); 
-delta = 1.2/p;    
+tau = 15*sqrt(n1*n2); 
+%%delta = 1.2/p;    
+delta = 0.6;
 %{
  if n1 and n2 are very different, then
    tau should probably be bigger than 5*sqrt(n1*n2)
@@ -85,7 +85,8 @@ tic
 toc
     
 X = U*S*V';
-    
+X=max(X,0);
+X=min(X,1);
 % Show results
 fprintf('The recovered rank is %d\n',length(diag(S)) );
 fprintf('The relative error on Omega is: %d\n', norm(data-X(Omega))/norm(data))
