@@ -25,25 +25,20 @@ function [x] = SVT_KZ(filename, users)
     %         SVT algorithm         %
     %                               %
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    maxiter = 1000; %maximum iterations
+    maxiter = 500; %maximum iterations
     tau = 1000;
 
     y{1} = ones(r,c);
     
     % the singular vector thresholding algorithms
     for k=2:maxiter
+        disp(k);
         [U, S, V] = svd(y{k-1});
         D = S - tau;
-        [d1,d2] = size(S);
-        for i=1:d1
-            for j=1:d2
-                if D(i,j) < 0
-                    D(i,j) = 0;
-                end
-            end
-        end
+        D = max(D,0);
         x{k} = U*D*V';
         y{k} = y{k-1} + (M-x{k}).*Omega;
     end
-    
+    c=clock;
+    save(strcat(mat2str(c),'.mat'))
 end
