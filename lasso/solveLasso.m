@@ -126,7 +126,7 @@ function z = solveLasso( y, X, lambda )
     found = 0;
     
     % convergence tolerance
-    TOL = 1e-5;
+    TOL = 1e-4;
     
     while( found == 0 )
     
