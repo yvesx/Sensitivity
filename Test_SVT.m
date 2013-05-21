@@ -34,11 +34,12 @@ end
 randn('state',2009);
 rand('state',2009);
 
+data = sensitivityRecSyS;
 %% n1 = 150; n2 = 300; r = 10;
-[n1,n2] = size(small);
-r = rank(small);
+[n1,n2] = size(data);
+r = rank(data);
 %%M = randn(n1,r)*randn(r,n2);
-M = small;
+M = data;
 df = r*(n1+n2-r);
 oversampling = 5; 
 m = min(5*df,round(.99*n1*n2) ); 
@@ -60,7 +61,7 @@ fprintf('\toversampling degrees of freedom by %.1f; noise std is %.1e\n',...
     m/df, sigma );
 %% Set parameters and solve
 
-tau = 15*sqrt(n1*n2); 
+tau = 25*sqrt(n1*n2); 
 %%delta = 1.2/p;    
 delta = 0.6;
 %{
