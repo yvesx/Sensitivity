@@ -63,7 +63,7 @@ fprintf('\toversampling degrees of freedom by %.1f; noise std is %.1e\n',...
 
 tau = 25*sqrt(n1*n2); 
 %%delta = 1.2/p;    
-delta = 0.6;
+delta = 0.8;
 %{
  if n1 and n2 are very different, then
    tau should probably be bigger than 5*sqrt(n1*n2)
