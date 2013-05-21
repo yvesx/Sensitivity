@@ -13,7 +13,8 @@
 %   
 %==========================================================================
 
-
+warning('off','all');
+warning;
 % load example data
 %data = load('sampleDataForLasso.mat');
 %y=data.y;
