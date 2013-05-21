@@ -15,7 +15,7 @@ import random
 
 db = MySQLdb.connect(host="xxxxx", port=3306, user="xxxxx", passwd="xxxx")
 cursor = db.cursor()
-# kindle amazon amazon-related, 
+# kindle amazon amazon related
 fids = [1,6,8364,838,8448,18,3397,32,17,2129,554,366,506,8163,55716,8164,395,8091,24,23,16]
 rows_to_write = {}
 for fid in fids:

@@ -1,0 +1,31 @@
+Sensitivity
+===========
+
+recommendation sensitivity project
+
+Based on Anand's JMR paper and new matrix completion technologies.
+
+
+column mapping
+|     1 | Amazon Kindle     |
+|     6 | Amazon.com        |
+|  8364 | Amazon Books      |
+|   838 | Amazon MP3        |
+
+|    16 | American Express  |
+|    17 | Mercedes-Benz USA |
+|    18 | BMW USA           |
+|    23 | MasterCard        |
+|    24 | Visa Signature    |
+|    32 | Mercedes-Benz     |
+|   366 | Walgreens         |
+|   395 | Kohl's            |
+|   506 | Target            |
+|   554 | Walmart           |
+|  2129 | Lexus             |
+|  3397 | BMW               |
+|  8091 | Visa              |
+|  8163 | Target Baby       |
+|  8164 | Target Style      |
+|  8448 | Amazon Student    |
+| 55716 | Target Canada     |
