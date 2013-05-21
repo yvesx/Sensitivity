@@ -1,0 +1,18 @@
+Templates for First-Order Conic Solvers (TFOCS)
+Version 1.2, Sept 7 2012
+by Stephen Becker, Emmanuel Candes, and Michael Grant.
+Copyright 2011 California Institute of Technology and CVX Research.
+
+Please see the file tfocs_userguide.pdf for instructions on how to use TFOCS
+and how to submit a support request.
+
+The complete license agreement is contained in the files license.txt and
+license.pdf. In order to use the software you must meet the conditions explained
+therein and agree to its terms. In short, academic, non-profit, and U.S. 
+government users are free to use TFOCS for non-commerical applications; and if
+you use this software in published research, you must cite it and its
+accompanying paper in your publications.
+
+This is prerelease software, and is subject to change: files may be added or
+removed, calling sequences may change, and performance may differ.
+

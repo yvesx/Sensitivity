@@ -1,0 +1,102 @@
+NONEXCLUSIVE, NON-TRANSFERABLE SOFTWARE LICENSE AGREEMENT
+
+This software license agreement ("Agreement") is effective as of the date
+("Effective Date") on which you download the Software specified below.  The
+Agreement is between your organization (hereinafter called "Licensee") and the
+California Institute of Technology, a not-for-profit California corporation,
+located at 1200 E. California Blvd., Pasadena, California 91125 ("Caltech"). 
+All rights not specifically granted in this Agreement are reserved to Caltech,
+Stanford, and CVX Research.  Caltech shall provide Licensee with source code for
+TFOCS ("Software"), which is protected under copyright laws and applicable
+international intellectual property treaties.  By downloading the Software,
+Licensee agrees to the terms of the Agreement.  If Licensee is not willing to
+agree to the terms of the Agreement, Licensee may not download the Software, and
+should contact Caltech's Office of Technology Transfer to request a license on
+different terms.  Software is available to Licensee on the following terms:
+
+1. Licensee represents and warrants that Licensee is (a) an academic
+institution, such as a university, (b) a not-for-profit organization, or (c) the
+United States Government.
+
+2. Caltech hereby grants to Licensee a nonexclusive, non-transferable, license,
+without the right to sublicense, to use the Software for non-commercial academic
+research purposes, to use the Software for non-commercial efforts of a
+not-for-profit organization, or to use the Software for the purposes of the
+United States Government only.  The Software may be reproduced and installed
+only on computers owned by Licensee or Licensee's Students and may only be used
+by Licensee, Licensee's employees or Licensee's students.  Licensee agrees not
+to distribute the Software to any person external to the Licensee without the
+prior written permission of Caltech.  Licensee may create Derivative Works of
+the Software (as defined in 17 U.S.C.), but may not distribute the Derivative
+Works to any person external to Licensee without the prior written permission of
+Caltech.
+
+3. The Software is experimental in nature and is being licensed "as is". The
+license agreement does not include any technical or other type of support.
+
+4. None of the Software provided or output from the Software provided may be
+used in commercial products or services directly or indirectly unless a license
+agreement granting the right to use the Software or output in commercial
+products or services is executed between Caltech and Licensee. Licensee agrees
+that it will not license, distribute, or sell the Software or any software,
+information or data that incorporate any part of the Software, including
+Derivative Works thereof (as defined in the U.S. copyright statutes, 17 USC S.
+101), to any other parties without having executed such an agreement with
+Caltech.
+
+5. Licensee agrees that any person within the Licensee utilizing the Software
+will be advised of, and is subject to, the conditions in the Agreement.
+
+6. THE SOFTWARE AND/OR RELATED MATERIALS ARE PROVIDED "AS-IS" WITHOUT WARRANTY
+OF ANY KIND INCLUDING ANY WARRANTIES OF PERFORMANCE OR NONINFRINGEMENT OR
+MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE OR PURPOSE (AS SET FORTH IN UCC
+2312-2313) OR FOR ANY PURPOSE WHATSOEVER, FOR THE LICENSED PRODUCT, HOWEVER
+USED.
+
+IN NO EVENT SHALL CALTECH, STANFORD, OR CVX RESEARCH BE LIABLE FOR ANY DAMAGES
+AND/OR COSTS, INCLUDING BUT NOT LIMITED TO INCIDENTAL OR CONSEQUENTIAL DAMAGES
+OF ANY KIND, INCLUDING ECONOMIC DAMAGE OR INJURY TO PROPERTY AND LOST PROFITS,
+REGARDLESS OF WHETHER CALTECH/JPL SHALL BE ADVISED, HAVE REASON TO KNOW, OR IN
+FACT SHALL KNOW OF THE POSSIBILITY.
+
+LICENSEE BEARS ALL RISK RELATING TO QUALITY AND PERFORMANCE OF THE SOFTWARE
+AND/OR RELATED MATERIALS, AND AGREES TO INDEMNIFY CALTECH, STANFORD, AND CVX
+RESEARCH FOR ALL THIRD-PARTY CLAIMS RESULTING FROM THE ACTIONS OF LICENSEE IN
+THE USE OF THE SOFTWARE.
+
+7. All right, title, and interest in and to the Software shall remain in
+Caltech, Stanford University, and CVX Research.  All right, title, and interest
+in and to all data, information, and inventions that result from use of the
+Software by the Licensee shall vest in and belong to the Licensee, with the
+exception of Derivative Works, which shall be owned according to U.S. copyright
+law.
+
+8. Licensee agrees that any publications that Licensee writes about topics
+involving the use of the Software will use accepted academic citations practices
+to provide explicit acknowledgement of both the Software and its authors:
+Stephen Becker, Emmanuel Candes, and Michael Grant.
+
+9. The Agreement covers the use described in paragraph 1 above.  All other uses
+of the Software by the Licensee must be approved in writing in advance by
+Caltech.
+
+10. This Agreement shall be governed by the laws of the State of California, and
+any action brought hereunder shall be within the State of California.
+
+11. The grant of this license is subject to the requirements necessary to comply
+with all applicable U.S. export laws (including, but not limited to, 22 CFR
+S.120-130 and 15 CFR S.730-774).  If Caltech determines that providing the
+Software to Licensee would violate said export laws, this Agreement shall be
+void.  Licensee agrees to comply with all applicable U.S. export control laws
+and regulations.  To the extent that the Software is subject to U.S. export
+control laws and regulations, the Licensee has the responsibility to obtain
+export licenses or other export authority as may be required before exporting
+such information to foreign countries or providing access to foreign persons.
+
+12. This Agreement constitutes the sole and entire agreement of the parties as
+to the matter set forth herein and supersedes any previous agreements,
+understandings, and arrangements, whether oral or written, between the parties
+relating hereto.  No waiver of or change in any of the terms hereof subsequent
+to the execution hereof claimed to have been made by any representative of
+either party shall have any force or effect unless in writing, signed by duly
+authorized representatives of the parties.
