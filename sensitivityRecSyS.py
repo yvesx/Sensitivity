@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # processes customer requests on the fly. tag features to comments
 # python CreateTimeCacheTable.py 1 1
+# Copyright (c) 2013 All Right Reserved, Voxsup Inc.
 import sys
 import os
 import MySQLdb
