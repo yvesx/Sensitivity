@@ -16,7 +16,7 @@ import random
 
 def getAffinity(id1,id2):
     if id1==id2:
-        return 1
+        return (0,0)
     query = "SELECT affinity_count,lift_on_id1 FROM new_precise_interest.new_precise_interest WHERE id1='%s' AND id2='%s'" % (id1,id2)
     try:
         cursor.execute(query)
@@ -64,16 +64,16 @@ fb_ids = [getFBID(fid) for fid in fids]
 
 start = time.time()
 for id1 in fb_ids:
-	row = []
+    row = []
     row2 = []
-	print "id1 writing..."
-	for id2 in fb_ids:
+    print "id1 writing..."
+    for id2 in fb_ids:
         aff,lft = getAffinity(id1,id2)
-		row.append(str(aff))
+        row.append(str(aff))
         row2.append(str(lft))
-	with open("aff_"+filename, "a") as myfile:
-		myfile.write(' '.join(row))
-		myfile.write('\n')
+    with open("aff_"+filename, "a") as myfile:
+        myfile.write(' '.join(row))
+        myfile.write('\n')
     with open("lft_"+filename, "a") as myfile:
         myfile.write(' '.join(row))
         myfile.write('\n')
