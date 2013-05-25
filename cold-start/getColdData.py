@@ -16,7 +16,14 @@ import random
 
 db = MySQLdb.connect(host="10.1.1.xxxxx", port=3306, user="xxxxx", passwd="xxxxx")
 cursor = db.cursor()
-# kindle amazon amazon-related, 
+# choose Walmart as the wall to predict. i.e. the one with sparse data
+# we will pull its most-related walls from DB to treat them as what we discover from LASSO SParse regression
+# then We will set up a few matrices to complete, each of which contained more content-information. The baseline 
+# matrix would be just user-brand co-filtering matrix. then we add attribute contents rows such as country, language,
+# category, likes etc. Then we can add rows that signify the intersection with selected walls.
+# 
+# The plan is to use matrix completion technologies to fill the user preference on walmart.
+# a proposed way to evaluate this cold-start-handling strategy is to use precise interests.
 fids = [1,6,8364,838,7,18,3397,32,17,2129,554,366,506,8163,14,8164,395,8091,24,23,16,4,15,28,30,31,38,35]
 rows_to_write = {}
 for fid in fids:
