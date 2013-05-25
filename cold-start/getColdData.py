@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # processes customer requests on the fly. tag features to comments
-# python CreateTimeCacheTable.py 1 1
+# python getColdData.py mymatrix.dat
 # Copyright (c) 2013 All Right Reserved, Voxsup Inc.
 import sys
 import os
@@ -14,6 +14,7 @@ import json
 from random import randrange
 import random
 
+filename = str(sys.argv[1])
 db = MySQLdb.connect(host="10.1.1.xxxxx", port=3306, user="xxxxx", passwd="xxxxx")
 cursor = db.cursor()
 # choose Walmart as the wall to predict. i.e. the one with sparse data
@@ -24,7 +25,24 @@ cursor = db.cursor()
 # 
 # The plan is to use matrix completion technologies to fill the user preference on walmart.
 # a proposed way to evaluate this cold-start-handling strategy is to use precise interests.
-fids = [1,6,8364,838,7,18,3397,32,17,2129,554,366,506,8163,14,8164,395,8091,24,23,16,4,15,28,30,31,38,35]
+fids = [554, # wal mart
+        23, # master card
+        506, # target
+        395, # kohls
+        12, # citiBank USA
+        4, # McDonalds
+        24, # VISA signature
+        3605, # Samsung USA
+        3210, # macys
+        4570, # kellogg pop tarts
+        6020, # FRS healthy performance
+        455, # old navy
+        871, # CVS
+        13, # pepsi
+        6278, # charles schwab
+        6, # Amazon.com
+        489, # sears
+        2787] # nexxus
 rows_to_write = {}
 for fid in fids:
     print "processing %s ..." % (fid)
@@ -47,7 +65,7 @@ for fid in fids:
             rows_to_write[row[0]] = dict()
             rows_to_write[row[0]][row[1]] = val
 
-with open("large.dat", "a") as myfile:
+with open(filename, "a") as myfile:
     for key in rows_to_write.keys():
         access_list = rows_to_write[key]
         mask = [ access_list[fid] if fid in access_list else 0 for fid in fids ]
