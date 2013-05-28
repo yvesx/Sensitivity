@@ -25,6 +25,13 @@ cursor = db.cursor()
 # 
 # The plan is to use matrix completion technologies to fill the user preference on walmart.
 # a proposed way to evaluate this cold-start-handling strategy is to use precise interests.
+# 1. fill w,the sparse column by TFOCS.
+# 2. cluster the users.
+# 3. for each cluster of users, learn f(a,b,c,a*b,b*c,a*c,ALLwalls/w) (how??)
+# 4. update the sparse column using learned f function (avg w/ existng val).
+# 5. now w is not sparse, use NNMF on the matrix.
+# 6. use NNMF to augment (a,b,c) to (a,b,c,d,e,f)
+# 7. Go to 3
 fids = [554, # wal mart
         23, # master card
         506, # target
