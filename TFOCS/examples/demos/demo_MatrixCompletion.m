@@ -5,32 +5,32 @@
 
 %% Setup a problem
 %rng(234923);    % for reproducible results
-big_M = small;
-[N,M]   = size(big_M);       % the matrix is N x N
-r   = rank(big_M);        % the rank of the matrix
-df = r*(N+M-r);  % degrees of freedom of a N x N rank r matrix
-nSamples = min(5*df,round(.99*N*M) ); 
+N   = 16;       % the matrix is N x N
+r   = 2;        % the rank of the matrix
+df  = 2*N*r - r^2;  % degrees of freedom of a N x N rank r matrix
+nSamples    = 3*df; % number of observed entries
 
 % For this demo, we will use a matrix with integer entries
 % because it will make displaying the matrix easier.
-X       = big_M; % Our target matrix
-
+iMax    = 2;
+%X       = randi(iMax,N,r)*randi(iMax,r,N); % Our target matrix
+X= randi(iMax,N,N);
+X=X-1;
 %%
 % Now suppose we only see a few entries of X. Let "Omega" be the set
 % of observed entries
-omega = randsample(N*M,nSamples);  % this requires the stats toolbox
-%rPerm   = randperm(N^2); % use "randsample" if you have the stats toolbox
-%omega   = sort( rPerm(1:nSamples) );
+rPerm   = randperm(N^2); % use "randsample" if you have the stats toolbox
+omega   = sort( rPerm(1:nSamples) );
 
 %%
 % Print out the observed matrix in a nice format.
 % The "NaN" entries represent unobserved values. The goal
 % of this demo is to find out what those values are!
 
-%Y = nan(N);
-%Y(omega) = X(omega);
-%disp('The "NaN" entries represent unobserved values');
-%disp(Y)
+Y = nan(N);
+Y(omega) = X(omega);
+disp('The "NaN" entries represent unobserved values');
+disp(Y)
 
 %% Matrix completion via TFOCS
 % We use nuclear norm relaxation.  There are strong theorems that
@@ -41,14 +41,14 @@ omega = randsample(N*M,nSamples);  % this requires the stats toolbox
 % enough measurements, it becomes increasingly likely to work.
 
 % Add TFOCS to your path (modify this line appropriately):
-addpath ../../
+addpath ~/Dropbox/TFOCS/
 
 observations = X(omega);    % the observed entries
 mu           = .001;        % smoothing parameter
 
 % The solver runs in seconds
 tic
-Xk = solver_sNuclearBP( {N,M,omega}, observations, mu );
+Xk = solver_sNuclearBP( {N,N,omega}, observations, mu );
 toc
 
 %%
