@@ -26,8 +26,8 @@ cursor = db.cursor()
 # The plan is to use matrix completion technologies to fill the user preference on walmart.
 # a proposed way to evaluate this cold-start-handling strategy is to use precise interests.
 # 1. fill w,the sparse column by TFOCS.
-# relative err: Relative error fill all 0s: 24.12201652% (70.26044772% against full matrix)
-#               Relative error only walmart 0s: 1.33375117% (67.95774583%)
+# relative err: Relative error fill all 0s:  12.95697829% ( 65.35627357% against full matrix)
+#               Relative error only walmart 0s:  0.19969832% ( 64.60999208%)
 # 2. cluster the users.
 # 3. for each cluster of users, learn f(a,b,c,a*b,b*c,a*c,ALLwalls/w) (how??)
 # 4. update the sparse column using learned f function (avg w/ existng val).

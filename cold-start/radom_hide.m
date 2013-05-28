@@ -7,8 +7,8 @@ load walmart_exp;
 %brandUserSparse9999 = walmart_top;
 %brandUserSparse9999(:,1) = brandUserSparse9999(:,1).*(rand(r,1)<0.0001); %95% sparse
 
-big_M = brandUserSparse999(1:6400,:); % try a small one
-my_M=walmart_top(1:6400,:);
+big_M = brandUserSparse999(1:51200,:); % try a small one
+my_M=walmart_top(1:51200,:);
 [N,M]   = size(big_M);       % the matrix is N x N
 omega = find(big_M);% this omega lists only nonzero cells and fills all zero entries
 one_s = ones(N,M);
