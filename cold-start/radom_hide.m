@@ -27,6 +27,8 @@ toc
 tic
 X2 = solver_sNuclearBP( {N,M,other_omega}, big_M(other_omega), mu );
 toc
+X1=max(X1,0);
+X2=max(X2,0);
 %disp('Recovered matrix (rounding to nearest .0001):')
 %disp( round(Xk*10000)/10000 )
 % and for reference, here is the original matrix:
