@@ -1,0 +1,38 @@
+% cosine dist turns out to be better than others i tried
+cosClustSp999WalFil = kmeans(brandUserSparse999WalFill,10,'distance','cosine');
+cosClustSp999AllFil = kmeans(brandUserSparse999AllFill,10,'distance','cosine');
+
+brandUserEM999WalFill = zeros(size(brandUserSparse999WalFill));
+for i=1:10
+    % for each cluster of users
+    idx = find(cosClustSp999WalFil==i);
+    cur_mat = brandUserSparse999WalFill(idx,:);%M-step
+    user_attri_mat = cur_mat * (init_abc') / (init_abc*init_abc');%E-step
+    % 500 EM iterations
+    for j = 1:100
+        old_mat = cur_mat;
+        cur_mat = user_attri_mat * init_abc; %M-step
+        fprintf('RltvErr: %.8f%%\n', norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro')*100 );
+        user_attri_mat = cur_mat * (init_abc') / (init_abc*init_abc');%E-step
+        %user_attri_mat = max(0,user_attri_mat);% also E-step
+        [~,init_abc] = nnmf(user_attri_mat, ,'w0', cur_mat);
+    end
+    % update the matrix
+    brandUserEM999WalFill(idx,:) = cur_mat;
+    %B = glmfit(user_attri_mat, [Y ones(10,1)], 'binomial', 'link', 'logit');
+    disp(i);
+end
+brandUserEM999WalFill = max(0,brandUserEM999WalFill);
+rank = zeros(18,4); % 18 brands and 4 kinds of rankings
+for i=2:18
+    rank(i,1)=norm(brandUserEM999WalFill(:,1)-brandUserEM999WalFill(:,i),1);
+    rank(i,2)=norm(brandUserEM999WalFill(:,1)-brandUserEM999WalFill(:,i),2);
+    rank(i,3)=norm(brandUserEM999WalFill(:,1)-brandUserEM999WalFill(:,i),Inf);
+    rank(i,4)=norm(brandUserEM999WalFill(:,1)-brandUserEM999WalFill(:,i),'fro');
+end
+rank = rank';
+for i=1:4
+    [~,~,z] = unique(rank(i,:));
+    z = max(z) - z  + 1; % reverse the rank
+    rank(i,:) = z;
+end
