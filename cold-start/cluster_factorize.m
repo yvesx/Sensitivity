@@ -5,8 +5,7 @@ cosClustSp999WalFil = kmeans(brandUserSparse999WalFill,10,'distance','cosine');
 cosClustSp999AllFil = kmeans(brandUserSparse999AllFill,10,'distance','cosine');
 
 brandUserEM999WalFill = zeros(size(brandUserSparse999WalFill));
-init_abc_orig = init_abc;
-for i=1:10
+for i=1:10 % 10 strata of users
     init_abc = init_abc_orig;
     % for each cluster of users
     idx = find(cosClustSp999WalFil==i);
@@ -20,8 +19,12 @@ for i=1:10
         %user_attri_mat = cur_mat * (init_abc') / (init_abc*init_abc');%E-step
         cur_mat = max(0,cur_mat);% also E-step
         [user_attri_mat,init_abc,D] = nnmf(cur_mat, 6 ,'h0',init_abc);
+        if (norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro') * 100 < 0.1 ) &&...
+           (D < 0.01), break, end
         %disp(D);
     end
+    fprintf('RltvErr: %.8f%%', norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro')*100 );
+    disp(D);
     % update the matrix
     brandUserEM999WalFill(idx,:) = cur_mat;
     %B = glmfit(user_attri_mat, [Y ones(10,1)], 'binomial', 'link', 'logit');
