@@ -28,7 +28,7 @@ cursor = db.cursor()
 # 1. fill w,the sparse column by TFOCS.
 # relative err: Relative error fill all 0s:  12.95697829% ( 65.35627357% against full matrix)
 #               Relative error only walmart 0s:  0.19969832% ( 64.60999208%)
-# 2. cluster the users.
+# 2. cluster the users. cosClustSp999WalFil,cosClustSp999AllFil
 # 3. for each cluster of users, learn f(a,b,c,a*b,b*c,a*c,ALLwalls/w) (how??)
 # 4. update the sparse column using learned f function (avg w/ existng val).
 # 5. now w is not sparse, use NNMF on the matrix.
