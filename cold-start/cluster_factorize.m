@@ -12,7 +12,7 @@ for i=1:10 % 10 strata of users
     cur_mat = brandUserSparse999WalFill(idx,:);%M-step
     user_attri_mat = cur_mat * (init_abc') / (init_abc*init_abc');%E-step
     % 500 EM iterations at most; will terminate sooner if converge quickly
-    for j = 1:500
+    for j = 1:300
         old_mat = cur_mat;
         cur_mat = user_attri_mat * init_abc; %M-step
         %fprintf('RltvErr: %.8f%%', norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro')*100 );
@@ -63,8 +63,14 @@ rank(:,6) = [18
 rank = rank';
 for i=1:5
     [~,~,z] = unique(rank(i,:));
+    z = max(z) - z  + 1; % reverse the rank
     rank(i,:) = z;
 end
-[~,~,z] = unique(sum(rank));
-z = max(z) - z  + 1; % reverse the rank
-rank = z';
+tau=zeros(5);
+for i=1:5
+    tau(i) = corr(rank(i,:)',rank(6,:)','type','Kendall');
+end
+
+%[~,~,z] = unique(sum(rank));
+%rank = z';
+%% base
