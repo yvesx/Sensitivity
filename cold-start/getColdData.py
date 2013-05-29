@@ -31,6 +31,7 @@ cursor = db.cursor()
 # 2. cluster the users. cosClustSp999WalFil,cosClustSp999AllFil
 # 3. for each cluster of users, learn f(a,b,c,a*b,b*c,a*c,ALLwalls/w) (how??)
 # using kmeans k=20 is noticeably better than k=10 in final correlation and convergence 
+# but k=30 performance is bad.
 # WalFill and AllFill seem to give close results in the end.
 # 4. update the sparse column using learned f function (avg w/ existng val).
 # 5. now w is not sparse, use NNMF on the matrix.
