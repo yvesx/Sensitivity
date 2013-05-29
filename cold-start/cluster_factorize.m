@@ -23,7 +23,7 @@ for i=1:10 % 10 strata of users
         %   (D < 0.0001), break, end
         %disp(D);
     end
-    disp(j);
+    %disp(j);
     fprintf('RltvErr: %.8f%%', norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro')*100 );
     disp(D);
     % update the matrix
@@ -32,7 +32,7 @@ for i=1:10 % 10 strata of users
     disp(i);
 end
 brandUserEM999WalFill = max(0,brandUserEM999WalFill);
-rank = zeros(18,5); % 18 brands and 5 kinds of rankings
+rank = zeros(18,6); % 18 brands and 5 kinds of rankings
 for i=2:18
     diff_v = brandUserEM999WalFill(:,1)-brandUserEM999WalFill(:,i);
     rank(i,1)=norm(diff_v,1);
@@ -41,6 +41,25 @@ for i=2:18
     rank(i,4)=norm(diff_v,'fro');
     rank(i,5)=mse(diff_v);
 end
+%benchmark
+rank(:,6) = [18
+5
+15
+17
+3
+12
+4
+8
+14
+7
+6
+11
+10
+16
+1
+9
+13
+2];
 rank = rank';
 for i=1:5
     [~,~,z] = unique(rank(i,:));
