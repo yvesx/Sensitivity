@@ -1,6 +1,6 @@
 clear all;
 load walmart_exp.mat;
-user_strata = 10;
+user_strata = 20;
 EM_itr = 300;
 % cosine dist turns out to be better than others i tried
 cosClustSp999WalFil = kmeans(brandUserSparse999WalFill,user_strata,'distance','cosine');
@@ -11,7 +11,9 @@ for i=1:user_strata % strata of users
     init_abc = init_abc_orig;
     % for each cluster of users
     idx = find(cosClustSp999WalFil==i);
+    idx = find(cosClustSp999AllFil==i);
     cur_mat = brandUserSparse999WalFill(idx,:);%M-step
+    cur_mat = brandUserSparse999AllFill(idx,:);%M-step
     user_attri_mat = cur_mat * (init_abc') / (init_abc*init_abc');%E-step
     % 500 EM iterations at most; will terminate sooner if converge quickly
     for j = 1:EM_itr
