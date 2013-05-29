@@ -30,6 +30,8 @@ cursor = db.cursor()
 #               Relative error only walmart 0s:  0.19969832% ( 64.60999208%)
 # 2. cluster the users. cosClustSp999WalFil,cosClustSp999AllFil
 # 3. for each cluster of users, learn f(a,b,c,a*b,b*c,a*c,ALLwalls/w) (how??)
+# using kmeans k=20 is noticeably better than k=10 in final correlation and convergence 
+# WalFill and AllFill seem to give close results in the end.
 # 4. update the sparse column using learned f function (avg w/ existng val).
 # 5. now w is not sparse, use NNMF on the matrix.
 # 6. use NNMF to augment (a,b,c) to (a,b,c,d,e,f)
