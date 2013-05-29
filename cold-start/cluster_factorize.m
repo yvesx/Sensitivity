@@ -1,18 +1,20 @@
 clear all;
 load walmart_exp.mat;
+user_strata = 10;
+EM_itr = 300;
 % cosine dist turns out to be better than others i tried
-cosClustSp999WalFil = kmeans(brandUserSparse999WalFill,10,'distance','cosine');
-cosClustSp999AllFil = kmeans(brandUserSparse999AllFill,10,'distance','cosine');
+cosClustSp999WalFil = kmeans(brandUserSparse999WalFill,user_strata,'distance','cosine');
+cosClustSp999AllFil = kmeans(brandUserSparse999AllFill,user_strata,'distance','cosine');
 
 brandUserEM999WalFill = zeros(size(brandUserSparse999WalFill));
-for i=1:10 % 10 strata of users
+for i=1:user_strata % strata of users
     init_abc = init_abc_orig;
     % for each cluster of users
     idx = find(cosClustSp999WalFil==i);
     cur_mat = brandUserSparse999WalFill(idx,:);%M-step
     user_attri_mat = cur_mat * (init_abc') / (init_abc*init_abc');%E-step
     % 500 EM iterations at most; will terminate sooner if converge quickly
-    for j = 1:300
+    for j = 1:EM_itr
         old_mat = cur_mat;
         cur_mat = user_attri_mat * init_abc; %M-step
         %fprintf('RltvErr: %.8f%%', norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro')*100 );
@@ -73,4 +75,11 @@ end
 
 %[~,~,z] = unique(sum(rank));
 %rank = z';
-%% base
+%% base line using random selection
+meanval = zeros(1,100);
+for i = 1:100
+    a = randperm(18);
+    %a = a(1:9);
+    meanval(i) = corr(a',rank(6,:)','type','Kendall');%length(find(a>9))/9;
+end
+disp(mean(meanval));

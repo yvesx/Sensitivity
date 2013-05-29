@@ -63,13 +63,16 @@ rank(:,6) = [18
 rank = rank';
 for i=1:5
     [~,~,z] = unique(rank(i,:));
+    z = max(z) - z  + 1; % reverse the rank
     rank(i,:) = z;
 end
+tau=zeros(5);
 for i=1:5
-    [~,~,z] = corr();
-    rank(i,:) = z;
+    tau(i) = corr(rank(i,:)',rank(6,:)','type','Kendall');
 end
 
-[~,~,z] = unique(sum(rank));
-z = max(z) - z  + 1; % reverse the rank
-rank = z';
+%[~,~,z] = unique(sum(rank));
+%rank = z';
+%% base line using random selection
+for i = 1:100
+    a = randperm(18);
