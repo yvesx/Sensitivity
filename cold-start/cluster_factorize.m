@@ -11,18 +11,19 @@ for i=1:10 % 10 strata of users
     idx = find(cosClustSp999WalFil==i);
     cur_mat = brandUserSparse999WalFill(idx,:);%M-step
     user_attri_mat = cur_mat * (init_abc') / (init_abc*init_abc');%E-step
-    % 500 EM iterations
-    for j = 1:300
+    % 500 EM iterations at most; will terminate sooner if converge quickly
+    for j = 1:500
         old_mat = cur_mat;
         cur_mat = user_attri_mat * init_abc; %M-step
         %fprintf('RltvErr: %.8f%%', norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro')*100 );
         %user_attri_mat = cur_mat * (init_abc') / (init_abc*init_abc');%E-step
         cur_mat = max(0,cur_mat);% also E-step
         [user_attri_mat,init_abc,D] = nnmf(cur_mat, 6 ,'h0',init_abc);
-        if (norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro') * 100 < 0.1 ) &&...
-           (D < 0.01), break, end
+        %if (norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro') * 100 < 0.01 ) &&...
+        %   (D < 0.0001), break, end
         %disp(D);
     end
+    disp(j);
     fprintf('RltvErr: %.8f%%', norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro')*100 );
     disp(D);
     % update the matrix
