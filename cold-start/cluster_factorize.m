@@ -1,10 +1,8 @@
-clear all;
-load walmart_exp.mat;
-user_strata = 20;
-EM_itr = 300;
+user_strata = 1;
+EM_itr = 500;
 % cosine dist turns out to be better than others i tried
 cosClustSp999WalFil = kmeans(brandUserSparse999WalFill,user_strata,'distance','cosine');
-cosClustSp999AllFil = kmeans(brandUserSparse999AllFill,user_strata,'distance','cosine');
+%cosClustSp999AllFil = kmeans(brandUserSparse999AllFill,user_strata,'distance','cosine');
 
 brandUserEM999WalFill = zeros(size(brandUserSparse999WalFill));
 for i=1:user_strata % strata of users
@@ -36,7 +34,7 @@ for i=1:user_strata % strata of users
     disp(i);
 end
 brandUserEM999WalFill = max(0,brandUserEM999WalFill);
-rank = zeros(18,6); % 18 brands and 5 kinds of rankings
+rank = Inf(18,6); % 18 brands and 5 kinds of rankings
 for i=2:18
     diff_v = brandUserEM999WalFill(:,1)-brandUserEM999WalFill(:,i);
     rank(i,1)=norm(diff_v,1);
@@ -67,7 +65,7 @@ rank(:,6) = [18
 rank = rank';
 for i=1:5
     [~,~,z] = unique(rank(i,:));
-    z = max(z) - z  + 1; % reverse the rank
+    %z = max(z) - z  + 1; % reverse the rank
     rank(i,:) = z;
 end
 tau=zeros(5);
