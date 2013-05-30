@@ -1,4 +1,4 @@
-user_strata = 1;
+user_strata = 2;
 EM_itr = 500;
 % cosine dist turns out to be better than others i tried
 cosClustSp999WalFil = kmeans(brandUserSparse999WalFill,user_strata,'distance','cosine');
