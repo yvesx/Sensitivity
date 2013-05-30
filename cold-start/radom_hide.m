@@ -2,11 +2,14 @@ clear all;
 load walmart_exp.mat;
 [r,c] = size(walmart_top);
 %brandUserSparse99 = walmart_top;
-%brandUserSparse99(:,1) = brandUserSparse99(:,1).*(rand(r,1)<0.01); %95% sparse
+%brandUserSparse99(:,1) = brandUserSparse99(:,1).*(rand(r,1)<0.01); %99% sparse
 brandUserSparse999 = walmart_top;
-brandUserSparse999(:,1) = brandUserSparse999(:,1).*(rand(r,1)<0.001); %95% sparse
+brandUserSparse999(:,1) = brandUserSparse999(:,1).*(rand(r,1)<0.001); %99.9% sparse
 %brandUserSparse9999 = walmart_top;
-%brandUserSparse9999(:,1) = brandUserSparse9999(:,1).*(rand(r,1)<0.0001); %95% sparse
+%brandUserSparse9999(:,1) = brandUserSparse9999(:,1).*(rand(r,1)<0.0001); %99.99% sparse
+%brandUserSparse0 = walmart_top;
+%brandUserSparse0(:,1) = brandUserSparse9999(:,1).*(rand(r,1)<0.00); %ALL
+%sparse i.e. no information is know about walmart
 
 big_M = brandUserSparse999(1:51200,:); % try a small one
 my_M=walmart_top(1:51200,:);
