@@ -1,5 +1,5 @@
-user_strata = 20;
-EM_itr = 100;
+user_strata = 2;
+EM_itr = 500;
 % cosine dist turns out to be better than others i tried
 cosClustSp999WalFil = kmeans(brandUserSparse999WalFill,user_strata,'distance','cosine');
 %cosClustSp999AllFil = kmeans(brandUserSparse999AllFill,user_strata,'distance','cosine');
@@ -26,7 +26,6 @@ for i=1:user_strata % strata of users
         %disp(D);
     end
     %disp(j);
-    % mesure fill-accuracy performance against full matrix
     fprintf('RltvErr: %.8f%%', norm(old_mat-cur_mat,'fro')/norm(cur_mat,'fro')*100 );
     disp(D);
     % update the matrix
@@ -35,11 +34,6 @@ for i=1:user_strata % strata of users
     disp(i);
 end
 brandUserEM999WalFill = max(0,brandUserEM999WalFill);
-a = brandUserEM999WalFill ./ max(max(brandUserEM999WalFill));
-b = brandUserSparse999WalFill ./ max(max(brandUserSparse999WalFill));
-fprintf('Relative error only walmart 0s: %.8f%%\n', norm(a-b,'fro')/norm(a+b,'fro')*100 );
-fprintf('Relative error only walmart 0s: %.8f%%\n', norm(a-b,'fro')/norm(b,'fro')*100 );
-
 rank = Inf(18,6); % 18 brands and 5 kinds of rankings
 for i=2:18
     diff_v = brandUserEM999WalFill(:,1)-brandUserEM999WalFill(:,i);

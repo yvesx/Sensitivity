@@ -27,12 +27,12 @@ addpath ../TFOCS/
 mu           = .001;        % smoothing parameter
 % The solver runs in seconds
 tic
-X1 = solver_sNuclearBP( {N,M,omega}, big_M(omega), mu );
+%X1 = solver_sNuclearBP( {N,M,omega}, big_M(omega), mu );
 toc
 tic
 X2 = solver_sNuclearBP( {N,M,other_omega}, big_M(other_omega), mu );
 toc
-X1=max(X1,0);
+%X1=max(X1,0);
 X2=max(X2,0);
 %disp('Recovered matrix (rounding to nearest .0001):')
 %disp( round(Xk*10000)/10000 )
@@ -40,11 +40,11 @@ X2=max(X2,0);
 %disp('Original matrix:')
 %disp( big_M )
 % The relative error (without the rounding) is quite low:
-fprintf('Relative error fill all 0s: %.8f%%\n', norm(big_M-X1,'fro')/norm(big_M,'fro')*100 );
+%fprintf('Relative error fill all 0s: %.8f%%\n', norm(big_M-X1,'fro')/norm(big_M,'fro')*100 );
 fprintf('Relative error only walmart 0s: %.8f%%\n', norm(big_M-X2,'fro')/norm(big_M,'fro')*100 );
 % mesure fill-accuracy performance against full matrix
 fprintf('Relative error only walmart 0s: %.8f%%\n', norm(big_M-my_M,'fro')/norm(my_M,'fro')*100 );
-fprintf('Relative error fill all 0s: %.8f%%\n', norm(X1-my_M,'fro')/norm(my_M,'fro')*100 );
+%fprintf('Relative error fill all 0s: %.8f%%\n', norm(X1-my_M,'fro')/norm(my_M,'fro')*100 );
 fprintf('Relative error only walmart 0s: %.8f%%\n', norm(X2-my_M,'fro')/norm(my_M,'fro')*100 );
 brandUserSparse999WalFill = X2;
 %brandUserSparse999AllFill = X1;
