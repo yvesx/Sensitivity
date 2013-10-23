@@ -1,37 +1,40 @@
 Sensitivity
 ===========
 
-recommendation sensitivity project
+Recommendation systems automatically recommend relevant items to users based on their preferences, which are vital to the success of online retailers and content providers. Collaborative filtering works well in practice at web scale. However, one common difficulty in collaborative filtering rec- ommendation systems is the “cold start” problem. The word “cold” refers to the items that are not yet rated by any user or the users who have not yet rated any items. We propose ELVER, an algorithm for recommending cold items from large, sparse user-item matrices. We use ELVER to recommend and optimize page-interest targeting on Facebook. Special traits of a social network like Facebook have influenced the design of ELVER. Existing techniques for cold recommendation mostly rely on content features in the event of lacking user ratings. Traditional items (e.g., movies or music) have rich, organized content features like actors, directors, awards, etc. Since it is very hard to construct universally meaningful features for the millions of Facebook pages, ELVER makes minimal assumption of content features. ELVER employs iterative matrix completion technology and nonnegative factorization procedure to work with meagre content inklings. Experiments on Facebook data shows the effectiveness of ELVER at different levels of sparsity.
 
-Based on Anand's JMR paper and new matrix completion technologies.
+* Publication
+``2013 IEEE International Conference on Big Data`` Yusheng Xie, Zhengzhang Chen, Kunpeng Zhang, Yu Cheng, Chen Jin, Ankit Agrawal, and Alok Choudhary. *Elver: Recommending Facebook Pages in Cold Start Situation Without Content Features*
 
 
-column mapping
-1|     1 | Amazon Kindle     |
-2|     6 | Amazon.com        |
-3|  8364 | Amazon Books      |
-4|   838 | Amazon MP3        |
-5|     7 | Delta             |
-6|    18 | BMW USA           |
-7|  3397 | BMW               |
-8|    32 | Mercedes-Benz     |
-9|    17 | Mercedes-Benz USA |
-10|  2129 | Lexus             |
-11|   554 | Walmart           |
-12|   366 | Walgreens         |
-13|   506 | Target            |
-14|  8163 | Target Baby       |
-15| 14    |      coke         |
-16|  8164 | Target Style      |
-17|   395 | Kohl's            |
-18|  8091 | Visa              |
-19|    24 | Visa Signature    |
-20|    23 | MasterCard        |
-21|    16 | American Express  |
-22         mcDonalds
-23          capital one
-24          sbux
-25          burger king
-26          wendys
-27          xbox
-28          united
+Background
+==========
+
+* Recommending traditional items and social entities
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/1.png)
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/2.png)
+* Collaborative Filtering Algorithm
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/3.png)
+
+The Problem
+===========
+
+* The cold item situation: items do not have enough user ratings.
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/4.png)
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/5.png)
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/6.png)
+* Limitations of Collaborative Filtering
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/7.png)
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/8.png)
+* The proposed framework and components
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/9.png)
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/10.png)
+* An iterative algorithm (stochastic Expectation-Maximization algorithm)
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/11.png)
+
+Evaluation
+==========
+* Convergence of the algorithm
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/12.png)
+* Matrix-wise recommendation mean square errors.
+![alt tag](https://raw.github.com/yvesx/Sensitivity/master/imgs/13.png)
